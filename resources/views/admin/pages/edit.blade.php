@@ -14,13 +14,7 @@
             <div class="form-group">
                 <label for="input0" class="col-sm-2 control-label bring_right left_text">اسم الصفحه عربي</label>
                 <div class="col-sm-10">
-                    <input type="text" value="{{old('name_en',$page->name_en)}}" class="form-control" id="name_en" name="name_en" placeholder="اسم الصفحه عربي">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="input0" class="col-sm-2 control-label bring_right left_text">اسم الصفحه انجليزي</label>
-                <div class="col-sm-10">
-                    <input type="text" value="{{old('name_ar',$page->name_ar)}}" class="form-control" id="name_ar" name="name_ar" placeholder="اسم الصفحه انجليزي">
+                    <input type="text" value="{{old('name_en',$page->name)}}" class="form-control" id="name" name="name" placeholder="اسم الصفحه عربي">
                 </div>
             </div>
             <div class="form-group">
@@ -47,7 +41,7 @@
                     <select class="form-control" style="height: unset;" name="parent">
                         <option value="0">صفحه اساسيه</option>
                         @foreach(\App\Models\Page::where('parent',0)->get() as $main_page)
-                        <option value="{{$main_page->id}}" {{old('order',$page->parent) == $main_page->id ? 'selected' : '' }}>{{ app()->getLocale() == 'en' ? $main_page->name_en : $main_page->name_ar}}</option>
+                        <option value="{{$main_page->id}}" {{old('order',$page->parent) == $main_page->id ? 'selected' : '' }}>{{ $main_page->name}}</option>
                         @endforeach
                     </select>
                 </div>

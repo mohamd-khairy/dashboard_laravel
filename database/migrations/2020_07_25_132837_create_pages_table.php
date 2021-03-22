@@ -15,8 +15,7 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('name_ar');
-            $table->string('name_en');
+            $table->string('name');
             $table->string('url');
             $table->string('icon')->nullable();
             $table->bigInteger('parent')->default(0);

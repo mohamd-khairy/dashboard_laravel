@@ -20,10 +20,10 @@
             <tr>
                 <td>{{$page->id}}</td>
                 <td><span class="{{$page->icon}}"></span></td>
-                <td>{{ app()->getLocale() == 'en' ? $page->name_en : $page->name_ar}}</td>
+                <td>{{$page->name}}</td>
                 <td>{{$page->url}}</td>
                 <td>{{$page->order}}</td>
-                <td>{{ app()->getLocale() == 'en' ? $page->parentPage->name_en ?? 'main' : $page->parentPage->name_ar ?? 'رئيسيه'}}</td>
+                <td>{{ app()->getLocale() == 'en' ? $page->parentPage->name ?? 'main' : $page->parentPage->name ?? 'رئيسيه'}}</td>
 
                 <td>
                     <a href="{{ route('admin.edit_page', $page->id) }}" class="btn btn-primary">

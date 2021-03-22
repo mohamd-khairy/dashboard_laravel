@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
-    protected $fillable = ['name_en', 'name_ar', 'url', 'icon', 'order', 'parent'];
+    protected $fillable = ['name', 'url', 'icon', 'order', 'parent'];
 
     public $timestamps = false;
 

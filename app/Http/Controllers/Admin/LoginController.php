@@ -25,4 +25,15 @@ class LoginController extends Controller
             return back()->with('errors' , ['some thing wrong']);
         }
     }
+
+    public function do_logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
+    }
 }

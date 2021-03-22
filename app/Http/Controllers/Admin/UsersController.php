@@ -36,7 +36,7 @@ class UsersController extends Controller
             'gender' => 'required'
         ]);
 
-        $data = $request->validated();
+        $data = $request->all();
         $data['password'] = Hash::make($request->password);
         User::create($data);
         return back()->with('message', 'تم اضافه مستخدم ينجاح');

@@ -7,7 +7,7 @@
     <div class="page_content">
         <div class="quick_links text-center">
             <h1 class="heading_title">الوصول السريع</h1>
-            <a href="#" style="background-color: #c0392b">
+            <a href="{{url('/')}}" style="background-color: #c0392b">
                 <h4>استعراض الموقع</h4>
             </a>
             <a href="options.html" style="background-color: #2980b9">

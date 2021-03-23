@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -15,10 +16,11 @@ class UsersTableSeeder extends Seeder
     {
 
         User::create([
-            'name'           => 'Admin',
+            'first_name'           => 'Admin',
             'email'          => 'admin@admin.com',
             'password'       => bcrypt('password'),
             'remember_token' => Str::random(60),
+            'email_verified_at' => Carbon::now()
         ]);
     }
 }

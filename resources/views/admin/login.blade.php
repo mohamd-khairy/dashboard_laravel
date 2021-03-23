@@ -17,9 +17,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Panal</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/icon.css" rel="stylesheet">
-    <link id="css" href="css/light_style.css" rel="stylesheet">
+    <!-- Favicons -->
+    <link href="{{asset($settings->image ?? '')}}" rel="icon">
+    <link href="{{asset($settings->image ?? '')}}" rel="apple-touch-icon">
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/icon.css')}}" rel="stylesheet">
+    <link id="css" href="{{asset('css/light_style.css')}}" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -43,17 +46,12 @@
                     <div id="test" class="modal-body notvis">
                         ادخل اسم المستخدم او البريد الالكتروني وكلمة المرور
                         <div class="input-group input-group-lg">
-                            <input type="text" class="form-control"name="email" placeholder="اسم المستخدم" aria-describedby="email">
+                            <input type="text" class="form-control" name="email" placeholder="اسم المستخدم" aria-describedby="email">
                             <span class="input-group-addon glyphicon glyphicon-user" id="email"></span>
                         </div>
                         <div class="input-group input-group-lg">
                             <input type="password" class="form-control" name="password" placeholder="كلمة المرور" aria-describedby="password">
                             <span class="input-group-addon glyphicon glyphicon-lock" id="password"></span>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> حفظ بيانات الدخول
-                            </label>
                         </div>
 
                     </div>
@@ -68,14 +66,11 @@
     </div>
     <!--End Login From-->
 
-    <!--Please Remove this <a> tag-->
-    <a href="index.html" style="text-align: center; display: block; margin-top: 50px; color: rgb(255, 0, 0); font-weight: bolder; font-size: 30px;">المتابعه لمعاينة صفحات لوحة التحكم</a>
-    <!--Please Remove this <a> tag-->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{asset('js/jquery-1.9.1.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
 
     <!--Start Login Area Show Animation-->

@@ -8,13 +8,33 @@ class Product extends Model
 {
     protected $guarded = [];
 
+    const model_en = 'product';
+    const model_ar = 'منتج';
     const fields = [
         'name' => 'الاسم',
         'image' => 'الصوره',
         'description' => 'الوصف',
-        'category_id' => 'النوع'
+        'price' => 'السعر',
+        'relation' => [
+            'coulmn_en' => 'category_id',
+            'coulmn_ar' => 'النوع',
+            'model' => \App\Models\Category::class
+        ]
     ];
 
-    const model_en = 'product';
-    const model_ar = 'منتج';
+
+    const rules_create = [
+        'name' => 'required',
+        'image' => 'required|image',
+        'description' => 'required',
+        'price' => 'required|numeric',
+        'category_id' => 'required'
+    ];
+
+    const rules_edit = [
+        'name' => 'required',
+        'description' => 'required',
+        'price' => 'required|numeric',
+        'category_id' => 'required'
+    ];
 }

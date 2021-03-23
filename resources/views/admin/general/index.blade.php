@@ -6,27 +6,30 @@
     <h1 class="heading_title">عرض الكل </h1>
 
     <div class="wrap">
-        <table class="table table-bordered">
+        <table class="table table-bordered text-center">
             <tr>
                 <td>#</td>
                 @foreach($fields as $en => $ar)
-                <td style="width: 20%;">{{$ar}}</td>
+                @if($en == 'relation')
+                <td>{{$ar['coulmn_ar'] ?? null}}</td>
+                @else
+                <td>{{$ar}}</td>
+                @endif
                 @endforeach
                 <td>التحكم</td>
             </tr>
             @foreach($data as $type)
             <tr>
-                <td>{{$type->id}}</td>
-
+                <td>{{$type->id ?? ''}}</td>
                 @foreach($fields as $en => $ar)
-                @if($en == 'description')
-                <td style="width: 40%;">{{$type->$en}}</td>
+                @if($en == 'relation')
+                <td>{{$ar['model']::find($type[$ar['coulmn_en']])->name ?? null}}</td>
+                @elseif($en == 'description')
+                <td>{{$type->$en}}</td>
                 @elseif($en == 'image')
-                <td style="width: 10%;">
-                    <img src="{{asset($type->$en)}}" style="width: 100px;">
-                </td>
+                <td><img src="{{asset($type->$en)}}" style="width: 100px;"></td>
                 @else
-                <td style="width: 10%;">{{$type->$en}}</td>
+                <td>{{$type->$en}}</td>
                 @endif
                 @endforeach
 
@@ -47,7 +50,9 @@
             </tr>
             @endforeach
         </table>
-
+        <div class="text-center">
+            {!! $data->links() !!}
+        </div>
     </div>
 </div>
 

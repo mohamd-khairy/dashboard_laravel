@@ -12,7 +12,18 @@
             <input type="hidden" name="_method" value="PUT">
 
             @foreach($fields as $en => $ar)
-            @if($en == 'description')
+            @if($en == 'relation')
+            <div class="form-group">
+                <label for="input0" class="col-sm-2 control-label bring_right left_text">{{$ar['coulmn_ar']}}</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="{{$ar['coulmn_en']}}" name="{{$ar['coulmn_en']}}">
+                        @foreach($ar['model']::all() as $value)
+                        <option value="{{$value->id}}" {{$value->id == $data[$ar['coulmn_en']] ? 'selected' : ''}}>{{$value->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            @elseif($en == 'description')
             <div class="form-group">
                 <label for="input0" class="col-sm-2 control-label bring_right left_text">{{$ar}}</label>
                 <div class="col-sm-10">
@@ -29,7 +40,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-10">
-                <img src="{{asset($data->$en)}}" style="width: 100px;">
+                    <img src="{{asset($data->$en)}}" style="width: 100px;">
                 </div>
             </div>
             @else
@@ -46,7 +57,7 @@
             <div class="form-group">
                 <div class="col-sm-12 left_text">
                     <button type="submit" class="btn btn-danger">تعديل</button>
-                    <button type="reset" class="btn btn-default">مسح الحقول</button>
+                    <a href="{{url('admin/'.$model_en.'/'.$data->id)}}" class="btn btn-default">مشاهده العنصر</a>
                 </div>
             </div>
         </form>

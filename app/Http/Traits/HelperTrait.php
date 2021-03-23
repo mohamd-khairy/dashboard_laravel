@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 
 trait HelperTrait
 {
-    public function index()
+    public function index(Request $request)
     {
         $model = self::MODEL;
         $model_en = $model::model_en;
         $model_ar = $model::model_ar;
         $fields = $model::fields;
-        $data = $model::get();
+        $data = $model::paginate(10);
 
         return view('admin.general.index')->with([
             'model_en' => $model_en,
@@ -57,16 +57,20 @@ trait HelperTrait
     public function update($id, Request $request)
     {
         $model = self::MODEL;
+        $request->validate($model::rules_edit);
+
         $data = $model::find($id);
 
         $inputs = $request->all();
         if (isset($request->image)) {
             $inputs['image'] = $this->upload_image($request->image);
-            unlink(public_path($data->image));
+            if (file_exists(public_path($data->image))) {
+                unlink(public_path($data->image));
+            }
         }
         $data->update($inputs);
 
-        return back()->with('data', $data)->with('message', 'تم التعديل  ينجاح');
+        return redirect(route('admin.' . $model::model_en.'.index'))->with('message', 'تم التعديل  ينجاح');
     }
 
     public function create()
@@ -85,6 +89,8 @@ trait HelperTrait
     public function store(Request $request)
     {
         $model = self::MODEL;
+        $request->validate($model::rules_create);
+
         $inputs = $request->all();
         if (isset($request->image)) {
             $inputs['image'] = $this->upload_image($request->file('image'));
@@ -92,6 +98,8 @@ trait HelperTrait
         $data = $model::create($inputs);
 
         return back()->with('data', $data)->with('message', 'تم الاضافه  ينجاح');
+        // return redirect(route('admin.' . $model::model_en.'.index'))->with('message', 'تم الاضافه  ينجاح');
+
     }
 
     public function destroy($id)

@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin panel</title>
+    <!-- Favicons -->
+    <link href="{{asset($settings->image ?? '')}}" rel="icon">
+    <link href="{{asset($settings->image ?? '')}}" rel="apple-touch-icon">
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/icon.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -27,7 +30,7 @@
                 <span class="glyphicon glyphicon-align-justify bring_left open_close_menu" data-toggle="tooltip" data-placement="right" title="Tooltip on left"></span>
             </div>
             <div class="col-sm-3 col-xs-12 head_buttons_area bring_left hidden-xs">
-               
+
                 <div class="inline-block full_screen bring_left hidden-xs">
                     <span class="glyphicon glyphicon-fullscreen" data-toggle="tooltip" data-placement="left" title="شاشة كاملة"></span>
                 </div>
@@ -44,7 +47,7 @@
             <div class="main_content_container">
                 <div class="main_container  main_menu_open">
 
-              
+
 
                     @if(session('message'))
                     <div class="row mb-2">

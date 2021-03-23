@@ -3,12 +3,30 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Contact;
+use App\Models\Product;
+use App\Models\Service;
+use App\Models\Sponser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    public function home()
+    {
+        $data = [
+            'products' => Product::count(),
+            'services' => Service::count(),
+            'category' => Category::count(),
+            'sponsers' => Sponser::count(),
+            'contact' => Contact::count()
+        ];
+
+        return view('admin.index' , compact('data'));
+    }
+
     public function login()
     {
         return view('admin.login');

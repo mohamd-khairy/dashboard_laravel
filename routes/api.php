@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/contact', 'HomePageController@do_contact')->name('homepage.do_contact');

@@ -4,21 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class About extends Model
+class Footer extends Model
 {
     protected $guarded = [];
 
-    const model_en = 'about';
-    const model_ar = 'تاريخ الشركه';
+    const model_en = 'footer';
+    const model_ar = 'نهايه الموقع';
     const fields = [
-        'description' => 'الوصف'
+        'title' => 'العنوان',
+        'description' => 'الوصف',
     ];
-
+   
     const rules_create = [
+        'title' => 'required',
         'description' => 'required'
     ];
 
     const rules_edit = [
+        'title' => 'required',
         'description' => 'required'
     ];
 }

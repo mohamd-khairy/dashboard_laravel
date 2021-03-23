@@ -1,10 +1,9 @@
 <?php
 
 use App\Models\Page;
-use App\Models\Setting;
 use Illuminate\Database\Seeder;
 
-class SettingsTableSeeder extends Seeder
+class PagesTableSeeder extends Seeder
 {
     /**
      * Auto generated seed file.

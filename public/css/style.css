@@ -484,9 +484,7 @@ body {
     text-align: center;
 }
 
-.wrap table tr td:first-child, .wrap table tr td:nth-child(2) {
-    width: 60px;
-}
+
 
 .wrap table td {
     vertical-align: middle !important;

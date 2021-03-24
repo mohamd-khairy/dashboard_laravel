@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('path.public', function() {
-            return env('CDN_CUSTOM_PATH');
+            return env('CDN_CUSTOM_PATH' , base_path('public'));
         });
     }
 

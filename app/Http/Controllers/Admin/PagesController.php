@@ -10,7 +10,7 @@ class PagesController extends Controller
 {
     public function index(Request $request)
     {
-        $pages = Page::with('parentPage')->orderBy('parent','asc')->orderBy('order','asc')->paginate(10);
+        $pages = Page::with('parentPage')->orderBy('parent', 'asc')->orderBy('order', 'asc')->paginate(10);
         return view('admin.pages.index', compact('pages'));
     }
 
@@ -29,7 +29,7 @@ class PagesController extends Controller
     {
         $page = Page::find($request->id);
         $page->update($request->all());
-        return back()->with('message', 'تم تعديل الصفحه ينجاح');
+        return redirect(route('admin.get_pages'))->with('message', 'تم تعديل الصفحه ينجاح');
     }
 
     public function store(Request $request)

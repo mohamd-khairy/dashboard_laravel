@@ -135,7 +135,7 @@
               <p>{{$product->description}}</p>
             </div>
             <div>
-              <a href="{{asset($product->image)}}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="نموذج 1"><i class="bx bx-plus"></i></a>
+              <a href="{{asset($product->image)}}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="{{$product->name}}"><i class="bx bx-plus"></i></a>
               <a href="{{url('product/'.$product->id)}}" class="details-link"><i class="bx bx-link"></i></a>
             </div>
           </div>

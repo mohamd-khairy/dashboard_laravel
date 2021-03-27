@@ -17,6 +17,7 @@ class CreateFootersTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
+            $table->string('copyright')->nullable();
             $table->timestamps();
         });
     }

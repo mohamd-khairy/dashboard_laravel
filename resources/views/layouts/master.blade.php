@@ -70,7 +70,7 @@
                 <a href="{{$so->url}}" class="facebook"><i class="{{$so->icon}}"></i></a>
                 @endforeach
                 @endif
-                <h6 class="mt-4">copyright {{date('Y')}} Made By JustCode Company</h6>
+                <h6 class="mt-4">{{$footer->copyright}}</h6>
                 <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> -->
                 <!-- <a href="https://www.facebook.com/Shamort-%D8%B4%D9%85%D9%88%D8%B1%D8%AA-110515784424261" class="facebook"><i class="bx bxl-facebook"></i></a> -->
                 <!-- <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a> -->

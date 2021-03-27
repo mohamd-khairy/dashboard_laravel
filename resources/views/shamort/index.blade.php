@@ -48,7 +48,8 @@
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
-        <h2> تاريخ الشركه </h2>
+        <h2> {{$settings->about_title ?? ''}} </h2>
+        <p>{{$settings->about_sub_title ?? ''}}</p>
       </div>
 
       <div class="row content">
@@ -72,33 +73,30 @@
   <section id="services" class="services section-bg">
     <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>خدماتنا </h2>
-          <!-- <p>هذا المكان هو مثال لنص يمكن الكتابه فيه بنفس الحجم ونفس الامكان
-            هذا المكان هو مثال لنص يمكن الكتابه فيه بنفس الحجم ونفس الامكان
-            هذا المكان هو مثال لنص يمكن الكتابه فيه بنفس الحجم ونفس الامكان.
-          </p> -->
-        </div>
+      <div class="section-title">
+        <h2> {{$settings->service_title ?? ''}} </h2>
+        <p>{{$settings->service_sub_title ?? ''}}</p>
+      </div>
 
-        <section id="icon-boxes" class="icon-boxes">
-          <div class="container">
-            <div class="row">
-              @foreach($data['service'] as $service)
-              <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate" data-aos="fade-up">
-                <a href="{{url('service/'.$service->id)}}">
-                    <div class="icon-box text-center">
-                        <h4 class="title" style="color: gold;">{{$service->name}}</h4>
-                        <div class=" icon-img">
-                          <img src="{{asset($service->image)}}" alt="">
-                        </div>
-                      <p class="description">{{$service->description}}</p>
-                    </div>
-                </a>
-              </div>
-              @endforeach
+      <section id="icon-boxes" class="icon-boxes">
+        <div class="container">
+          <div class="row">
+            @foreach($data['service'] as $service)
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate" data-aos="fade-up">
+              <a href="{{url('service/'.$service->id)}}">
+                <div class="icon-box text-center">
+                  <h4 class="title" style="color: gold;">{{$service->name}}</h4>
+                  <div class=" icon-img">
+                    <img src="{{asset($service->image)}}" alt="">
+                  </div>
+                  <p class="description">{{$service->description}}</p>
+                </div>
+              </a>
             </div>
+            @endforeach
           </div>
-        </section>
+        </div>
+      </section>
     </div>
   </section>
   <!-- End Services Section -->
@@ -111,11 +109,8 @@
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
-        <h2>منتجاتنا</h2>
-        <!-- <p>
-          هذا المكان هو مثال لنص يمكن الكتابه فيه بنفس الحجم ونفس الامكان
-          هذا المكان هو مثال لنص يمكن الكتابه فيه بنفس الحجم ونفس الامكان
-        </p> -->
+        <h2> {{$settings->product_title ?? ''}} </h2>
+        <p>{{$settings->product_sub_title ?? ''}}</p>
       </div>
 
       <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">

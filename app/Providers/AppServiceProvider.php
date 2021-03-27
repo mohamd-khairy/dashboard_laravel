@@ -7,6 +7,7 @@ use App\Models\Setting;
 use App\Models\Social;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,8 +18,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('path.public', function() {
-            return env('CDN_CUSTOM_PATH' , base_path('public'));
+        $this->app->bind('path.public', function () {
+            return env('CDN_CUSTOM_PATH', base_path('public'));
         });
     }
 
@@ -29,8 +30,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share('footer', Footer::first() ?? null);
-        view()->share('settings', Setting::first() ?? null);
-        view()->share('social', Social::all() ?? null);
+        view()->share('footer', Schema::hasTable('footers') ? Footer::first() : null);
+        view()->share('settings', Schema::hasTable('settings') ? Setting::first() : null);
+        view()->share('social', Schema::hasTable('socials') ? Social::all() : null);
     }
 }

@@ -13,6 +13,7 @@ class Footer extends Model
     const fields = [
         'title' => 'العنوان',
         'description' => 'الوصف',
+        'copyright' => 'حقوق الملكيه'
     ];
    
     const rules_create = [

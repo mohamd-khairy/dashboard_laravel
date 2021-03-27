@@ -17,15 +17,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UsersTableSeeder::class);
+        // $this->call(UsersTableSeeder::class);
         $this->call(SettingsTableSeeder::class);
 
-        factory(Category::class , 10)->create();
-        factory(About::class , 10)->create();
-        factory(Contact::class , 10)->create();
-        factory(Product::class , 10)->create();
-        factory(Service::class , 10)->create();
-        factory(Sponser::class , 10)->create();
+        // factory(Category::class , 10)->create();
+        // factory(About::class , 10)->create();
+        // factory(Contact::class , 10)->create();
+        // factory(Product::class , 10)->create();
+        // factory(Service::class , 10)->create();
+        // factory(Sponser::class , 10)->create();
 
         
     }

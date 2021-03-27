@@ -13,18 +13,20 @@ use App\Models\Setting;
 use App\Models\Social;
 use App\Models\Sponser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class HomePageController extends Controller
 {
     public function index()
     {
+        $settings = Schema::hasTable('settings') ?  Setting::first() : null;
         $data = [
             'header'   => Header::first() ?? null,
-            'sponser'  => Sponser::inRandomOrder()->take(6)->get() ?? null,
-            'about'    => About::inRandomOrder()->take(2)->get() ?? null,
-            'service'  => Service::inRandomOrder()->take(4)->get() ?? null,
-            'category' => Category::take(10)->get() ?? null,
-            'product'  => Product::inRandomOrder()->take(12)->get() ?? null,
+            'sponser'  => Sponser::inRandomOrder()->take($settings->sponser_count ?? 6)->get() ?? null,
+            'about'    => About::inRandomOrder()->take($settings->about_count ?? 8)->get() ?? null,
+            'service'  => Service::inRandomOrder()->take($settings->service_count ?? 12)->get() ?? null,
+            'category' => Category::take($settings->category_count ?? 6)->get() ?? null,
+            'product'  => Product::inRandomOrder()->take($settings->product_count ?? 12)->get() ?? null,
         ];
         return view('shamort.index', compact('data'));
     }

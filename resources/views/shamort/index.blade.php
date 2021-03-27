@@ -54,7 +54,7 @@
 
       <div class="row content">
         @foreach($data['about'] as $about)
-        <div class="col-lg-6">
+        <div class="col-lg-6 pb-4">
           <p>
             {{$about->description}}
           </p>

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 23, 2021 at 11:07 PM
--- Server version: 5.7.24
--- PHP Version: 7.4.7
+-- Generation Time: Mar 31, 2021 at 04:38 AM
+-- Server version: 10.3.28-MariaDB-log-cll-lve
+-- PHP Version: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ihsan`
+-- Database: `shamdrxw_shamort`
 --
 
 -- --------------------------------------------------------
@@ -29,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `abouts` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -85,7 +86,7 @@ CREATE TABLE `contacts` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mobile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci,
+  `message` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -108,7 +109,9 @@ INSERT INTO `contacts` (`id`, `name`, `email`, `mobile`, `message`, `created_at`
 (11, 'mohamed khairy', 'red.devile2011@gmail.com', '01555512090', 'fdfdf', '2021-03-23 19:35:22', '2021-03-23 19:35:22'),
 (12, 'mohamed', 'red.devile2011@gmail.com', '01021952160', 'yyy', '2021-03-23 19:35:55', '2021-03-23 19:35:55'),
 (13, 'mohamed khairy', 'red.devile2011@gmail.com', '01555512090', 'يبيب', '2021-03-23 19:40:55', '2021-03-23 19:40:55'),
-(14, 'mohamed khairy', 'red.devile2011@gmail.com', '01555512090', 'sdfs', '2021-03-23 19:41:49', '2021-03-23 19:41:49');
+(14, 'mohamed khairy', 'red.devile2011@gmail.com', '01555512090', 'sdfs', '2021-03-23 19:41:49', '2021-03-23 19:41:49'),
+(15, 'Alicia Hsia', 'admin@admin.com', '01021895462', 'sdkjlhsvd nbsd', '2021-03-24 12:02:49', '2021-03-24 12:02:49'),
+(16, 'ahmed', 'ahmed@mail.com', '01016865640', 'fueigwf8d7fqwy wqufvcyw', '2021-03-29 23:44:15', '2021-03-29 23:44:15');
 
 -- --------------------------------------------------------
 
@@ -122,7 +125,7 @@ CREATE TABLE `failed_jobs` (
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -134,7 +137,8 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `footers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `copyright` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -143,8 +147,8 @@ CREATE TABLE `footers` (
 -- Dumping data for table `footers`
 --
 
-INSERT INTO `footers` (`id`, `title`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'شمورت', 'تقدر تتابع وتشوف افضل اسعار الفراخ وافضل منتجات الطيور معانا في شمورت دلوقتي مع شمورت هتشوف افضل واجود الانواع', '2021-03-23 17:27:15', '2021-03-23 17:27:15');
+INSERT INTO `footers` (`id`, `title`, `description`, `copyright`, `created_at`, `updated_at`) VALUES
+(1, 'شمورت', 'تقدر تتابع وتشوف افضل اسعار الفراخ وافضل منتجات الطيور معانا في شمورت دلوقتي مع شمورت هتشوف افضل واجود الانواع', 'copyright @2021 made by JustCode Company', '2021-03-23 17:27:15', '2021-03-23 17:27:15');
 
 -- --------------------------------------------------------
 
@@ -155,9 +159,9 @@ INSERT INTO `footers` (`id`, `title`, `description`, `created_at`, `updated_at`)
 CREATE TABLE `headers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `image` text COLLATE utf8mb4_unicode_ci,
-  `video` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `video` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -167,7 +171,7 @@ CREATE TABLE `headers` (
 --
 
 INSERT INTO `headers` (`id`, `title`, `description`, `image`, `video`, `created_at`, `updated_at`) VALUES
-(1, 'مرحبا', 'تقدر تتابع وتشوف افضل اسعار الفراخ وافضل منتجات الطيور معانا في شمورت دلوقتي مع شمورت هتشوف افضل واجود الانواع', 'images/161653929617835.jpeg', 'https://www.youtube.com/watch?v=MiSSj-y649Q&ab_channel=TemryChicken', '2021-03-23 17:27:15', '2021-03-23 20:41:36');
+(1, 'مرحبا', 'تقدر تتابع وتشوف افضل اسعار الفراخ وافضل منتجات الطيور معانا في شمورت دلوقتي مع شمورت هتشوف افضل واجود الانواع', 'images/161657509668209.png', 'https://www.youtube.com/watch?v=MiSSj-y649Q&ab_channel=TemryChicken', '2021-03-23 17:27:15', '2021-03-24 12:38:16');
 
 -- --------------------------------------------------------
 
@@ -212,7 +216,7 @@ CREATE TABLE `pages` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `parent` bigint(20) NOT NULL DEFAULT '0',
+  `parent` bigint(20) NOT NULL DEFAULT 0,
   `order` smallint(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -221,39 +225,39 @@ CREATE TABLE `pages` (
 --
 
 INSERT INTO `pages` (`id`, `name`, `url`, `icon`, `parent`, `order`) VALUES
-(3, 'الصفحات', 'page', 'glyphicon glyphicon-list', 0, 3),
+(3, 'الصفحات', 'page', 'glyphicon glyphicon-list', 0, 12),
 (7, 'عرض الكل', 'page', 'glyphicon glyphicon-edit', 3, 1),
 (8, 'اضافه صفحه', 'page/add', 'glyphicon glyphicon-plus', 3, 2),
-(9, 'المستخدمين', 'user', 'glyphicon glyphicon-user', 0, 3),
+(9, 'المستخدمين', 'user', 'glyphicon glyphicon-user', 0, 11),
 (10, 'اضافه مستخدم', 'user/add', 'glyphicon glyphicon-plus', 9, 2),
 (11, 'عرض الكل', 'user', 'glyphicon glyphicon-edit', 9, 1),
 (12, 'الصفحه الرئيسيه', '/', 'glyphicon glyphicon-dashboard', 0, 1),
-(13, 'الانواع', 'category', 'glyphicon glyphicon-folder-open', 0, 2),
+(13, 'الانواع', 'category', 'glyphicon glyphicon-folder-open', 0, 9),
 (14, 'اضافه نوع', 'category/create', 'glyphicon glyphicon-plus', 13, 2),
 (15, 'عرض الكل', 'category', 'glyphicon glyphicon-list', 13, 1),
-(16, 'العملاء', 'sponser', 'glyphicon glyphicon-folder-open', 0, 2),
+(16, 'العملاء', 'sponser', 'glyphicon glyphicon-folder-open', 0, 3),
 (17, 'عرض الكل', 'sponser', 'glyphicon glyphicon-list', 16, 1),
 (18, 'اضافه عميل', 'sponser/create', 'glyphicon glyphicon-plus', 16, 2),
-(19, 'تاريخنا', 'about', 'glyphicon glyphicon-folder-open', 0, 2),
+(19, 'تاريخنا', 'about', 'glyphicon glyphicon-folder-open', 0, 4),
 (20, 'عرض الكل', 'about', 'glyphicon glyphicon-edit', 19, 1),
 (21, 'اضافه جديده', 'about/create', 'glyphicon glyphicon-plus', 19, 2),
-(22, 'المنتجات', 'product', 'glyphicon glyphicon-folder-open', 0, 2),
+(22, 'المنتجات', 'product', 'glyphicon glyphicon-folder-open', 0, 6),
 (23, 'عرض الكل', 'product', 'glyphicon glyphicon-list', 22, 1),
 (24, 'اضافه جديده', 'product/create', 'glyphicon glyphicon-plus', 22, 2),
-(25, 'الخدمات', 'service', 'glyphicon glyphicon-folder-open', 0, 2),
+(25, 'الخدمات', 'service', 'glyphicon glyphicon-folder-open', 0, 5),
 (26, 'عرض الكل', 'service', 'glyphicon glyphicon-list', 25, 1),
 (27, 'اضافه جديده', 'service/create', 'glyphicon glyphicon-plus', 25, 2),
-(28, 'تواصل معنا', 'contact', 'glyphicon glyphicon-folder-open', 0, 2),
-(29, 'اعدادات الموقع', 'setting', 'glyphicon glyphicon-cog', 0, 2),
+(28, 'تواصل معنا', 'contact', 'glyphicon glyphicon-folder-open', 0, 7),
+(29, 'اعدادات الموقع', 'setting', 'glyphicon glyphicon-cog', 0, 13),
 (30, 'عرض الاعدادات', 'setting/1', 'glyphicon glyphicon-list', 29, 1),
 (31, 'تعديل الاعدادات', 'setting/1/edit', 'glyphicon glyphicon-edit', 29, 2),
 (32, 'البانر', 'header', 'glyphicon glyphicon-folder-open', 0, 2),
 (33, 'تعديل البانر', 'header/1/edit', 'glyphicon glyphicon-edit', 32, 1),
 (34, 'عرض البانر', 'header/1', 'glyphicon glyphicon-list', 32, 2),
-(35, 'نهايه الموقع', 'footer', 'glyphicon glyphicon-folder-open', 0, 2),
+(35, 'نهايه الموقع', 'footer', 'glyphicon glyphicon-folder-open', 0, 8),
 (36, 'تعديل نهايه الموقع', 'footer/1/edit', 'glyphicon glyphicon-edit', 35, 1),
 (37, 'عرض نهايه الموقع', 'footer/1', 'glyphicon glyphicon-list', 35, 2),
-(38, 'التواصل الاجتماعي', 'social', 'glyphicon glyphicon-folder-open', 0, 2),
+(38, 'التواصل الاجتماعي', 'social', 'glyphicon glyphicon-folder-open', 0, 10),
 (39, 'اضافه جديده', 'social/create', 'glyphicon glyphicon-plus', 38, 2),
 (40, 'عرض الكل', 'social', 'glyphicon glyphicon-list', 38, 1);
 
@@ -278,8 +282,8 @@ CREATE TABLE `password_resets` (
 CREATE TABLE `products` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` text COLLATE utf8mb4_unicode_ci,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -291,12 +295,12 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `image`, `description`, `price`, `category_id`, `created_at`, `updated_at`) VALUES
-(1, 'Nelda Turner Sr.', 'images/161653866321814.jpg', 'Saepe natus quia mollitia velit. Vel qui vitae facere molestias maiores. At quos sed accusamus. Aliquid necessitatibus aliquam voluptas odio quia.', '72', 2, '2021-03-23 16:50:13', '2021-03-23 20:31:46'),
+(1, 'Nelda Turner Sr.', 'images/161657714510671.jpg', 'Saepe natus quia mollitia velit. Vel qui vitae facere molestias maiores. At quos sed accusamus. Aliquid necessitatibus aliquam voluptas odio quia.', '72', 2, '2021-03-23 16:50:13', '2021-03-24 13:12:25'),
 (2, 'Sophie O\'Hara', 'images/161653867324861.jpg', 'A commodi assumenda vitae quibusdam officia illo. Voluptatem cum aut eius dolorem iure. Ut vel accusamus voluptatem sit et molestiae deleniti repellendus.', '129', 5, '2021-03-23 16:50:13', '2021-03-23 20:31:13'),
-(3, 'Corrine Dickinson', 'images/161653869117134.jpg', 'Ut illum minima quae ut consequatur voluptas aut similique. Aliquid autem voluptas non dolore rem quos. Itaque omnis delectus adipisci qui.', '453', 3, '2021-03-23 16:50:13', '2021-03-23 20:31:58'),
-(11, 'دجاج كنتاكي', 'images/161653889221812.png', 'دجاج كنتاكيدجاج كنتاكيدجاج كنتاكيدجاج كنتاكيدجاج كنتاكي', '100', 1, '2021-03-23 20:34:52', '2021-03-23 20:34:52'),
-(12, 'دجاج ابو حلب', 'images/161653894454508.jpg', 'دجاج ابو حلبدجاج ابو حلبدجاج ابو حلبدجاج ابو حلبدجاج ابو حلب', '600', 2, '2021-03-23 20:35:44', '2021-03-23 20:35:44'),
-(13, 'دجاج قلعه حلب', 'images/161653896785400.jpg', 'دجاج ابو حلبدجاج ابو حلبدجاج ابو حلبدجاج ابو حلب', '1000', 3, '2021-03-23 20:36:07', '2021-03-23 20:36:07');
+(3, 'Corrine Dickinson', 'images/161657716291441.jpg', 'Ut illum minima quae ut consequatur voluptas aut similique. Aliquid autem voluptas non dolore rem quos. Itaque omnis delectus adipisci qui.', '453', 3, '2021-03-23 16:50:13', '2021-03-24 13:12:42'),
+(11, 'دجاج كنتاكي', 'images/161657681969693.png', 'دجاج كنتاكيدجاج كنتاكيدجاج كنتاكيدجاج كنتاكيدجاج كنتاكي', '100', 1, '2021-03-23 20:34:52', '2021-03-24 13:06:59'),
+(12, 'دجاج ابو حلب', 'images/161657730187083.jpg', 'دجاج ابو حلبدجاج ابو حلبدجاج ابو حلبدجاج ابو حلبدجاج ابو حلب', '600', 2, '2021-03-23 20:35:44', '2021-03-24 13:15:01'),
+(13, 'دجاج قلعه حلب', 'images/161657718620033.png', 'دجاج ابو حلبدجاج ابو حلبدجاج ابو حلبدجاج ابو حلب', '1000', 3, '2021-03-23 20:36:07', '2021-03-24 13:13:06');
 
 -- --------------------------------------------------------
 
@@ -307,8 +311,8 @@ INSERT INTO `products` (`id`, `name`, `image`, `description`, `price`, `category
 CREATE TABLE `services` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` text COLLATE utf8mb4_unicode_ci,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -334,8 +338,19 @@ INSERT INTO `services` (`id`, `name`, `image`, `description`, `price`, `category
 
 CREATE TABLE `settings` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `site_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` text COLLATE utf8mb4_unicode_ci,
+  `site_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `about_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `about_sub_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `about_count` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `service_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `service_sub_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `service_count` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_sub_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_count` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category_count` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sponser_count` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -344,8 +359,8 @@ CREATE TABLE `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `site_name`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Shamort', 'images/161653289910371.png', NULL, '2021-03-23 18:54:59');
+INSERT INTO `settings` (`id`, `site_name`, `image`, `about_title`, `about_sub_title`, `about_count`, `service_title`, `service_sub_title`, `service_count`, `product_title`, `product_sub_title`, `product_count`, `category_count`, `sponser_count`, `created_at`, `updated_at`) VALUES
+(1, 'Shamort', 'images/161683850740834.png', 'تاريخنا', 'تقاصيل عن سيكشن تاريخنا', '4', 'خدماتنا', 'تفاصيل عن سيكشن الخدمات', '8', 'منتجاتنا', 'تفاصيل عن سيكشن المنتجات', '8', '4', '6', '2021-03-27 07:29:58', '2021-03-27 13:49:00');
 
 -- --------------------------------------------------------
 
@@ -381,7 +396,7 @@ INSERT INTO `socials` (`id`, `name`, `icon`, `url`, `created_at`, `updated_at`) 
 CREATE TABLE `sponsers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` text COLLATE utf8mb4_unicode_ci,
+  `image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -427,7 +442,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `second_name`, `third_name`, `last_name`, `mobile`, `country`, `city`, `email`, `email_verified_at`, `password`, `gender`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'mohamed', 'mohamed', 'mohamed', 'khairy', '+201555512090', 'Egypt', 'damanhour', 'admin@admin.com', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0, NULL, '2020-07-25 13:53:00', '2020-07-25 14:06:51'),
+(2, 'mohamed', 'mohamed', 'mohamed', 'khairy', '+201555512090', 'Egypt', 'damanhour', 'admin@admin.com', NULL, '$2y$10$rvmS2LXWGbF3n66baSjomO5cdrilXHN6AqYrrEyaFHrY11xaTkW4a', 1, NULL, '2020-07-25 13:53:00', '2021-03-25 14:03:20'),
 (3, 'Aiyana Cummerata', 'mohamed', 'mohamed', 'khairy', '01555512090', 'Egypt', 'Cairo', 'm.khairy@evntoo.com', NULL, '$2y$10$GUHhkwntAEjNK0wmvVxDde07Gi3tK53IZwpBtDmIaL9jw4iJmgFli', 1, NULL, '2021-03-22 16:14:02', '2021-03-22 16:14:02');
 
 --
@@ -547,7 +562,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`

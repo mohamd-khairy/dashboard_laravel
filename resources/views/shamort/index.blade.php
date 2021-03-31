@@ -140,9 +140,27 @@
 
     </div>
   </section>
-  <!-- End product Section -->
   @endif
 
+
+  @if($data['category'])
+  <section id="portfolio" class="container">
+    <div class="container text-center portfolio row ">
+      <div class="section-title">
+        <h2> {{$settings->product_title ?? ''}} </h2>
+        <p>{{$settings->product_sub_title ?? ''}}</p>
+      </div>
+      @foreach($data['category'] as $category)
+      <div class="col-xl-2 col-lg-3 col-md-5 card" style="width:24%;margin: 0 5px;">
+        <div class="card-body">
+          <h5 class="card-title">{{$category->name}}</h5>
+          <a href="{{url('category/'.$category->id)}}" class="btn btn-primary">شاهد المزيد</a>
+        </div>
+      </div>
+      @endforeach
+    </div>
+  </section>
+  @endif
 </main><!-- End #main -->
 
 @endsection

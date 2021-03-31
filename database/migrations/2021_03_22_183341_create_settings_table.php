@@ -25,6 +25,8 @@ class CreateSettingsTable extends Migration
             $table->string('service_count')->nullable();
             $table->string('product_title')->nullable();
             $table->string('product_sub_title')->nullable();
+            $table->string('category_title')->nullable();
+            $table->string('category_sub_title')->nullable();
             $table->string('product_count')->nullable();
             $table->string('category_count')->nullable();
             $table->string('sponser_count')->nullable();

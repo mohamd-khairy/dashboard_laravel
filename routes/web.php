@@ -14,6 +14,8 @@ Route::get('/product/{id}', 'HomePageController@product_details')->name('homepag
 Route::get('/services', 'HomePageController@services')->name('homepage.services');
 Route::get('/service/{id}', 'HomePageController@service_details')->name('homepage.service_details');
 
+Route::get('/category/{id}', 'HomePageController@category_details')->name('homepage.category_details');
+
 /******************* admin ********************* */
 Route::get('/login', 'Admin\LoginController@login')->name('login');
 Route::post('/login', 'Admin\LoginController@do_login')->name('do_login');

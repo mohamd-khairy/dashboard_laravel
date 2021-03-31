@@ -19,10 +19,12 @@ class Setting extends Model
         'service_title' => 'عنوان سيكشن الخدمات',
         'service_sub_title' => 'تفاصيل عن سيكشن الخدمات',
         'service_count' => 'عدد ظهور الخدمات',
+        'category_title' => 'عنوان سيكشن الخدمات',
+        'category_sub_title' => 'تفاصيل عن سيكشن الخدمات',
+        'category_count' => 'عدد ظهور الانواع',
         'product_title' => 'عنوان سيكشن المنتجات',
         'product_sub_title' => 'تفاصيل عن سيكشن المنتجات',
         'product_count' => 'عدد ظهور المنتجات',
-        'category_count' => 'عدد ظهور الانواع',
         'sponser_count' => 'عدد ظهور العملاء'
     ];
 
@@ -38,6 +40,8 @@ class Setting extends Model
         'product_title' => 'required',
         'product_sub_title' => 'required',
         'product_count' => 'required',
+        'category_title' => 'required',
+        'category_sub_title' => 'required',
         'category_count' => 'required',
         'sponser_count' => 'required',
     ];
@@ -53,6 +57,8 @@ class Setting extends Model
         'product_title' => 'required',
         'product_sub_title' => 'required',
         'product_count' => 'required',
+        'category_title' => 'required',
+        'category_sub_title' => 'required',
         'category_count' => 'required',
         'sponser_count' => 'required',
     ];

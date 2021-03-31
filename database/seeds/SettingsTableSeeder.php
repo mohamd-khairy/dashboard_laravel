@@ -24,6 +24,8 @@ class SettingsTableSeeder extends Seeder
             'product_title' => 'منتجاتنا',
             'product_sub_title' => 'تفاصيل عن سيكشن المنتجات',
             'product_count' => 8,
+            'category_title' => 'الانواع',
+            'category_sub_title' => 'تفاصيل عن سيكشن الانواع',
             'category_count' => 4,
             'sponser_count' => 6
         ]);

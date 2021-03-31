@@ -69,4 +69,12 @@ class HomePageController extends Controller
         return view('shamort.service_details')->with('service', Service::find($id))
             ->with('services', Service::where('id', '!=', $id)->inRandomOrder()->take(4)->get());
     }
+
+    public function category_details($id)
+    {
+        return view('shamort.category_details')
+            ->with('category', Category::where('id', $id)->first())
+            ->with('services', Service::where('category_id', $id)->get())
+            ->with('products', Product::where('category_id', $id)->get());
+    }
 }

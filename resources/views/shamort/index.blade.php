@@ -145,7 +145,7 @@
 
   @if($data['category'])
   <section id="portfolio" class="container">
-    <div class="container text-center portfolio row ">
+    <div class="container text-center portfolio row "  data-aos="fade-up" data-aos-delay="200">
       <div class="section-title">
         <h2> {{$settings->product_title ?? ''}} </h2>
         <p>{{$settings->product_sub_title ?? ''}}</p>

@@ -33,9 +33,7 @@
         </a>
       </div>
       @endforeach
-    </div>
-
-    <div class="row">
+ 
       @foreach($services as $service)
       <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate" data-aos="fade-up">
         <a href="{{url('service/'.$service->id)}}">

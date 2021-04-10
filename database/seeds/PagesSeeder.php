@@ -30,7 +30,7 @@ class PagesTableSeeder extends Seeder
             ],
             [
                 'name' => 'اضافه صفحه',
-                'url' => 'pages/create',
+                'url' => 'pages/add',
                 'icon' => 'glyphicon glyphicon-plus',
                 'parent' => $first->id,
                 'order' => 2

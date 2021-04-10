@@ -37,7 +37,7 @@ Route::group(['prefix' => 'admin',  'as' => 'admin.', 'middleware' => 'auth', 'n
     /** pages */
     Route::get('/pages', 'PagesController@index')->name('get_pages');
     Route::get('/pages/add', 'PagesController@create')->name('get_create_page');
-    Route::post('/pages/create', 'PagesController@store')->name('add_page');
+    Route::get('/pages/create', 'PagesController@store')->name('add_page');
     Route::get('/pages/edit/{id}', 'PagesController@edit')->name('edit_page');
     Route::put('/pages/update', 'PagesController@update')->name('update_page');
     Route::delete('/pages/delete/{id}', 'PagesController@delete')->name('delete_page');
@@ -45,7 +45,7 @@ Route::group(['prefix' => 'admin',  'as' => 'admin.', 'middleware' => 'auth', 'n
     /** users */
     Route::get('/user', 'UsersController@index')->name('get_users');
     Route::get('/user/add', 'UsersController@create')->name('get_create_user');
-    Route::post('/user/create', 'UsersController@store')->name('add_user');
+    Route::get('/user/create', 'UsersController@store')->name('add_user');
     Route::get('/user/edit/{id}', 'UsersController@edit')->name('edit_user');
     Route::put('/user/update', 'UsersController@update')->name('update_user');
     Route::delete('/user/delete/{id}', 'UsersController@delete')->name('delete_user');

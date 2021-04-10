@@ -35,12 +35,12 @@ Route::group(['prefix' => 'admin',  'as' => 'admin.', 'middleware' => 'auth', 'n
     Route::resource('social', 'SocialController');
 
     /** pages */
-    Route::get('/page', 'PagesController@index')->name('get_pages');
-    Route::get('/page/add', 'PagesController@create')->name('get_create_page');
-    Route::post('/page/create', 'PagesController@store')->name('add_page');
-    Route::get('/page/edit/{id}', 'PagesController@edit')->name('edit_page');
-    Route::put('/page/update', 'PagesController@update')->name('update_page');
-    Route::delete('/page/delete/{id}', 'PagesController@delete')->name('delete_page');
+    Route::get('/pages', 'PagesController@index')->name('get_pages');
+    Route::get('/pages/add', 'PagesController@create')->name('get_create_page');
+    Route::post('/pages/create', 'PagesController@store')->name('add_page');
+    Route::get('/pages/edit/{id}', 'PagesController@edit')->name('edit_page');
+    Route::put('/pages/update', 'PagesController@update')->name('update_page');
+    Route::delete('/pages/delete/{id}', 'PagesController@delete')->name('delete_page');
 
     /** users */
     Route::get('/user', 'UsersController@index')->name('get_users');

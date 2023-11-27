@@ -22,8 +22,6 @@ class CarsController extends Controller
         return view('admin.cars.check-create', compact('cars', 'errors_data'));
     }
 
-
-
     public function check(Request $request)
     {
         $id = $request->car_id;
@@ -56,7 +54,7 @@ class CarsController extends Controller
     {
         $car_id = $id;
         $errors_data = Error::get();
-        $historys = CarHistory::with('error', 'car')->where('car_id', $id)->get();
+        $historys = CarHistory::with('error', 'car')->where('car_id', $id)->latest()->get();
 
         return view('admin.cars.car_history', compact('historys', 'car_id', 'errors_data'));
     }
@@ -67,8 +65,10 @@ class CarsController extends Controller
             'details' => 'nullable|required_without:error_ids',
             'error_ids' => 'nullable|required_without:details'
         ], [
-            'details.max' => 'لا يمكن ان يكون سابق الصرف اكثر من 150 حرف'
+            'details.required_without' => 'لابد من ادخال سابق صرف',
+            'error_ids.required_without' => 'لابد من ادخال سابق صرف'
         ]);
+
         $inputs = $request->except('error_ids');
 
         $error_ids = is_array($request->error_ids) ? $request->error_ids : json_decode($request->error_ids);
@@ -78,6 +78,13 @@ class CarsController extends Controller
 
         $inputs['details'] = $details;
         $data = CarHistory::create($inputs);
+
+        $new_error = explode('+', $request->details);
+        if ($new_error) {
+            foreach ($new_error as $key => $value) {
+                Error::firstOrCreate(['details' => $value]);
+            }
+        }
 
         return back()->with('message', 'تم الاضافه  ينجاح');
     }

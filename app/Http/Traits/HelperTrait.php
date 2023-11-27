@@ -25,7 +25,7 @@ trait HelperTrait
         }
 
 
-        $data = $data->paginate(10);
+        $data = $data->latest()->paginate(10);
 
         return view('admin.general.index')->with([
             'model_en' => $model_en,

@@ -30,6 +30,6 @@ class Car extends Model
 
     public function historys()
     {
-        return $this->hasMany(CarHistory::class)->latest();
+        return $this->hasMany(CarHistory::class)->orderBy('date', 'asc');
     }
 }

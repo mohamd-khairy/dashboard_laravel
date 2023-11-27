@@ -12,7 +12,20 @@ trait HelperTrait
         $model_en = $model::model_en;
         $model_ar = $model::model_ar;
         $fields = $model::fields;
-        $data = $model::paginate(10);
+        $data = $model::query();
+
+        if (request('search')) {
+            foreach ($fields as $k => $f) {
+                $data = $data->orWhere($k, 'like', '%' . request('search') . '%');
+            }
+        }
+        if ($model_en == 'cars') {
+
+            $data = $data->with('historys')->withCount('historys');
+        }
+
+
+        $data = $data->paginate(10);
 
         return view('admin.general.index')->with([
             'model_en' => $model_en,
@@ -70,7 +83,7 @@ trait HelperTrait
         }
         $data->update($inputs);
 
-        return redirect(route('admin.' . $model::model_en.'.index'))->with('message', 'تم التعديل  ينجاح');
+        return redirect(route('admin.' . $model::model_en . '.index'))->with('message', 'تم التعديل  ينجاح');
     }
 
     public function create()

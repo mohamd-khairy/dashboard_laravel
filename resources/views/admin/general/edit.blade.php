@@ -57,7 +57,7 @@
             <div class="form-group">
                 <div class="col-sm-12 left_text">
                     <button type="submit" class="btn btn-danger">تعديل</button>
-                    <a href="{{url('admin/'.$model_en.'/'.$data->id)}}" class="btn btn-default">مشاهده العنصر</a>
+                    <a href="{{url($model_en)}}" class="btn btn-default">مشاهده العناصر</a>
                 </div>
             </div>
         </form>

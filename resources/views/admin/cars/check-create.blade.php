@@ -11,7 +11,7 @@
 
                     <div class="col-md-12" style="margin-top: 20px">
                         <label for="input0" class=" control-label bring_right left_text">السيارة </label>
-                        <select class="js-example-theme-single js-states form-control" name="car_id" style="width:100%">
+                        <select class="js-example-theme-single js-states form-control" name="car_id" style="width:100%" required>
                             @foreach ($cars as $car)
                                 <option value="{{ $car->id }}">{{ $car->police_number }}</option>
                             @endforeach
@@ -27,11 +27,11 @@
                         </select>
                     </div>
 
-                    <div class="col-md-12" style="margin-top: 20px">
+                    {{-- <div class="col-md-12" style="margin-top: 20px">
                         <label for="input0" class=" control-label bring_right left_text"> عطل اخر</label>
                         <input type="text" class="form-control" id="other_error" name="other_error"
                             placeholder="اكتب عطل اخر">
-                    </div>
+                    </div> --}}
 
                 </div>
                 <div class="form-group text-center">

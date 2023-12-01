@@ -14,10 +14,10 @@ class Car extends Model
         'police_number' => 'رقم الشرطة',
         'brand' => 'الماركة',
         'model' => 'الموديل',
-        'meter' => 'قراءة العداد',
-        'rank' => 'الرتبة',
+        'meter' => 'شاسيه',
+        'rank' => 'رقم الموتور',
         'user_name' => 'اسم المستخدم',
-        'work_place' => 'جهه العمل',
+        'work_place' => 'نوع الوقود',
     ];
 
     const rules_create = [

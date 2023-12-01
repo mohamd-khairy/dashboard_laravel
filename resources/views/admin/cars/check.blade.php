@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة الفحص الفني</title>
+    <title>إذن إصلاح خارجي</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -60,7 +60,7 @@
 
         th,
         td {
-            border: 1px solid #ddd;
+            border: 2px solid #ddd;
             padding: 5px;
             text-align: right;
         }
@@ -100,12 +100,12 @@
             </div>
             <div style="text-align: center">
                 <p>
-                <h3>"فحص فني لحالة المركبة" </h3>
+                <h3>"إذن إصلاح خارجي" </h3>
                 </p>
             </div>
             <div class="invoice-details">
                 <div style="padding-left: 25px">
-                    <p> {{ date('Y') }} \............:<strong>إذن رقم</strong></p>
+                    <p> {{ date('Y') }} /............:<strong>إذن رقم</strong></p>
                 </div>
                 <div style="padding-right: 25px">
                     <p>....................................:<strong>التاريخ</strong></p>
@@ -115,10 +115,10 @@
                 <!-- Another table with one row -->
                 <thead>
                     <tr>
-                        <th style="text-align: center">جهة العمل</th>
+                        <th style="text-align: center">نوع الوقود</th>
                         <th style="text-align: center">اسم المستخدم</th>
-                        <th style="text-align: center">الرتبة</th>
-                        <th style="text-align: center">قراءة العداد</th>
+                        <th style="text-align: center">رقم الموتور</th>
+                        <th style="text-align: center">شاسيه</th>
                         <th style="text-align: center">الموديل</th>
                         <th style="text-align: center">الماركة</th>
                         <th style="text-align: center">رقم الشرطة</th>
@@ -141,21 +141,21 @@
                 <thead>
                     <tr>
                         <th style="text-align: center"> المخازن</th>
-                        <th style="text-align: center">رأي اللجنة الفنية</th>
+                        {{-- <th style="text-align: center">رأي اللجنة الفنية</th> --}}
                         <th style="text-align: center">تاريخ سابق الصرف</th>
-                        <th style="text-align: center">نوع العطل</th>
+                        <th style="text-align: center"> الاصلاحات المطلوبة</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr style="padding:0px;height:350px;max-height: 350px; min-height:350px">
                         <td style="width: 200px"></td>
-                        <td style="width: 200px"></td>
+                        {{-- <td style="width: 200px"></td> --}}
                         <td style="width: 400px; text-align:right;" class="top-right">
                             @foreach ($historys as $h)
                                 <div>{{ $h->details }} ({{ date('Y-m', strtotime($h->date)) }})</div>
                             @endforeach
                         </td>
-                        <td style="width: 200px; text-align:right;" class="top-right">
+                        <td style="width: 400px; text-align:right;" class="top-right">
                             {{ $errors_text }}</td>
                     </tr>
                 </tbody>
